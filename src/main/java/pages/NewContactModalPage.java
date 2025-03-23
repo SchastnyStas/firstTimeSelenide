@@ -1,40 +1,39 @@
 package pages;
 
+import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.ComboBox;
 import elements.Dropdown;
 import elements.Input;
 import objects.Contact;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class NewContactModalPage extends BasePage {
 
-    @FindBy(xpath = "//*[@name = 'SaveEdit']")
-    public WebElement saveButton;
 
-    @FindBy(name = "SaveAndNew")
-    public WebElement saveAndNewButton;
+    public static final SelenideElement SAVE_BUTTON = $x("//*[@name = 'SaveEdit']");
 
-    @FindBy(name = "CancelEdit")
-    public WebElement cancelButton;
+    public static final SelenideElement SAVE_AND_NEW_BUTTON = $(By.id("SaveAndNew"));
 
-    public NewContactModalPage(WebDriver driver) {
-        super(driver);
-    }
+    public static final SelenideElement CANCEL_BUTTON = $(By.id("CancelEdit"));
+
+
+
 
     public NewContactModalPage openPage(String url) {
-        driver.get(url);
+       open(url);
         return this;
     }
 
     public void createNewContact(Contact contact) {
-        new Dropdown(driver, "Salutation").accountSelectOption(contact.getSalutation());
-        new Input(driver, "First Name").writeTextToInput(contact.getFirstName());
-        new Input(driver, "Last Name").writeTextToInput(contact.getLastName());
-        new ComboBox(driver).accountSelectOption(contact.getAccountName());
-        new Input(driver, "Phone").writeTextToInput(contact.getPhoneContact());
-        new Button(driver).clickButton(saveButton);
+        new Dropdown("Salutation").accountSelectOption(contact.getSalutation());
+        new Input("First Name").writeTextToInput(contact.getFirstName());
+        new Input("Last Name").writeTextToInput(contact.getLastName());
+        new ComboBox().accountSelectOption(contact.getAccountName());
+        new Input("Phone").writeTextToInput(contact.getPhoneContact());
+        new Button().clickButton(SAVE_BUTTON);
     }
 }

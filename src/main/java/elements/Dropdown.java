@@ -1,21 +1,20 @@
 package elements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class Dropdown {
     private static final String ACCOUNT_DROPDOWN_XPATH = "//*[contains(text(), '%s')]/ancestor::*[contains(@slot, 'inputField')]//button";
     private static final String ACCOUNT_DROPDOWN_OPTION_XPATH = "//*[contains(@title, '%s')]";
-    WebDriver driver;
+
     String label;
 
-    public Dropdown(WebDriver driver, String label) {
-        this.driver = driver;
+    public Dropdown(String label) {
+
         this.label = label;
     }
 
     public void accountSelectOption(String option) {
-        driver.findElement(By.xpath(String.format(ACCOUNT_DROPDOWN_XPATH, label))).click();
-        driver.findElement(By.xpath(String.format(ACCOUNT_DROPDOWN_OPTION_XPATH, option))).click();
+        $x(String.format(ACCOUNT_DROPDOWN_XPATH, label)).click();
+        $x(String.format(ACCOUNT_DROPDOWN_OPTION_XPATH, option)).click();
     }
 }

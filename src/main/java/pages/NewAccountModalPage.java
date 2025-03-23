@@ -1,38 +1,43 @@
 package pages;
 
+import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Dropdown;
 import elements.Input;
 import objects.Account;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class NewAccountModalPage extends BasePage {
-    @FindBy(xpath = "//*[@name = 'SaveEdit']")
-    public WebElement saveButton;
 
-    @FindBy(name = "SaveAndNew")
-    public WebElement saveAndNewButton;
+    public static final SelenideElement SAVE_BUTTON = $x("//*[@name = 'SaveEdit']");
 
-    @FindBy(name = "CancelEdit")
-    public WebElement cancelButton;
+    public static final SelenideElement SAVE_AND_NEW_BUTTON = $(By.id("SaveAndNew"));
 
-    public NewAccountModalPage(WebDriver driver) {
-        super(driver);
+    public static final SelenideElement CANCEL_BUTTON = $(By.id("CancelEdit"));
+
+
+    public NewAccountModalPage() {
     }
 
     public NewAccountModalPage openPage(String url) {
-        driver.get(url);
+        open(url);
         return this;
     }
 
     public void createNewAccount(Account account) {
-        new Input(driver, "Account Name").writeTextToInput(account.getAccountName());
-        new Input(driver, "Website").writeTextToInput(account.getWebSite());
-        new Dropdown(driver, "Type").accountSelectOption(account.getType());
-        new Input(driver, "Description").writeTextToTextarea(account.getDescription());
-        new Input(driver, "Phone").writeTextToInput(account.getPhone());
-        new Button(driver).clickButton(saveButton);
+        new Input("Account Name").writeTextToInput(account.getAccountName());
+        new Input("Website").writeTextToInput(account.getWebSite());
+        new Dropdown("Type").accountSelectOption(account.getType());
+        new Input("Description").writeTextToTextarea(account.getDescription());
+        new Input("Phone").writeTextToInput(account.getPhone());
+        new Button().clickButton(SAVE_BUTTON);
     }
 }
+
+
+//public void waitForPageLoad() {
+//    new WebDriverWait(getWebDriver(), Duration.ofSeconds(30)).until((ExpectedCondition<Boolean>) wd ->
+//            ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+//}

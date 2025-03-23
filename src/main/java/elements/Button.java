@@ -1,16 +1,17 @@
 package elements;
 
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Button {
-    WebDriver driver;
 
-    public Button(WebDriver driver) {
-        this.driver = driver;
+
+    public Button() {
+
     }
 
-    public void clickButton(WebElement webElement) {
+    public void clickButton(SelenideElement webElement) {
         webElement.click();
     }
 }

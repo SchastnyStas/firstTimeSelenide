@@ -7,6 +7,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.open;
+
 public class AccountListPage extends BasePage {
     public static final String TABLE_XPATH = "//table";
     public static final String ACCOUNT_NAME_FIELD_XPATH = TABLE_XPATH + "//a[contains" +
@@ -17,31 +20,25 @@ public class AccountListPage extends BasePage {
             "/ancestor::tr" +
             "//span[contains(@class, 'uiOutputText')]";
 
-    public AccountListPage(WebDriver driver) {
-        super(driver);
+    public AccountListPage() {
+        super();
     }
 
     public AccountListPage openPage(String url) {
-        driver.get(url);
-        waitForPageToLoad();
-        return this;
-    }
-
-    public AccountListPage waitForPageToLoad() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(TABLE_XPATH)));
+        open(url);
         return this;
     }
 
     public String getExistAccountName(String accountName) {
-        return driver.findElement(By.xpath(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName))).getText();
+        return $x(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName)).getText();
     }
 
     public String getExistPhoneNumberByAccountName(String accountName) {
-        return driver.findElement(By.xpath(String.format(PHONE_BY_ACCOUNT_NAME_XPATH, accountName))).getText();
+        return $x(String.format(PHONE_BY_ACCOUNT_NAME_XPATH, accountName)).getText();
     }
 
     public AccountPage clickOnAccountName(String accountName) {
-        driver.findElement(By.xpath(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName))).click();
-        return new AccountPage(driver);
+        $x(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName)).click();
+        return new AccountPage();
     }
 }
