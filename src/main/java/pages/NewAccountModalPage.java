@@ -35,9 +35,3 @@ public class NewAccountModalPage extends BasePage {
         new Button().clickButton(SAVE_BUTTON);
     }
 }
-
-
-//public void waitForPageLoad() {
-//    new WebDriverWait(getWebDriver(), Duration.ofSeconds(30)).until((ExpectedCondition<Boolean>) wd ->
-//            ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
-//}

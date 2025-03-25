@@ -16,7 +16,6 @@ public class ContactListPage extends BasePage {
             "/ancestor::tr//a[contains(@class, 'uiOutputText')]";
 
     public ContactListPage() {
-
     }
 
     public ContactListPage openPage(String url) {
@@ -36,7 +35,8 @@ public class ContactListPage extends BasePage {
         return $x(String.format(PHONE_BY_CONTACT_NAME_XPATH, accountName)).getText();
     }
 
-    public String getExistContactOwnerByAccountName(String accountName) {
-        return $x(String.format(CONTACT_OWNER_BY_ACCOUNT_XPATH, accountName)).getText();
+    public ContactPage clickOnAccountName(String accountName) {
+        $x(String.format(CONTACT_NAME_FIELD_XPATH, accountName)).click();
+        return new ContactPage();
     }
 }

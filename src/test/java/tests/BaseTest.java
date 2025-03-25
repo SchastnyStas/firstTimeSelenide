@@ -2,18 +2,15 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import constants.IConstants;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
@@ -27,6 +24,7 @@ public class BaseTest implements ITestConstants, IConstants {
     NewAccountModalPage newAccountModalPage;
     ContactListPage contactListPage;
     NewContactModalPage newContactModalPagePage;
+    ContactPage contactPage;
 
     public void initPage() {
         accountPage = new AccountPage();
@@ -36,6 +34,7 @@ public class BaseTest implements ITestConstants, IConstants {
         newAccountModalPage = new NewAccountModalPage();
         contactListPage = new ContactListPage();
         newContactModalPagePage = new NewContactModalPage();
+        contactPage = new ContactPage();
     }
 
     @BeforeMethod

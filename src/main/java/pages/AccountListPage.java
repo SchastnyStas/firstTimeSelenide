@@ -1,12 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -16,9 +9,6 @@ public class AccountListPage extends BasePage {
             "(@title, '%s')]";
     public static final String PHONE_BY_ACCOUNT_NAME_XPATH = ACCOUNT_NAME_FIELD_XPATH +
             "/ancestor::tr//span[contains(@class, 'forceOutputPhone')]";
-    public static final String ACCOUNT_OWNER_BY_ACCOUNT_XPATH = ACCOUNT_NAME_FIELD_XPATH +
-            "/ancestor::tr" +
-            "//span[contains(@class, 'uiOutputText')]";
 
     public AccountListPage() {
         super();

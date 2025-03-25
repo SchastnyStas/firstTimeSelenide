@@ -1,6 +1,5 @@
 package pages;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.ComboBox;
@@ -21,10 +20,8 @@ public class NewContactModalPage extends BasePage {
     public static final SelenideElement CANCEL_BUTTON = $(By.id("CancelEdit"));
 
 
-
-
     public NewContactModalPage openPage(String url) {
-       open(url);
+        open(url);
         return this;
     }
 

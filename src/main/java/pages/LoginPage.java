@@ -14,7 +14,6 @@ public class LoginPage extends BasePage {
 
 
     public LoginPage() {
-
     }
 
     public LoginPage openPage(String url) {
