@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -36,7 +37,7 @@ public class ContactListPage extends BasePage {
     }
 
     public ContactPage clickOnAccountName(String accountName) {
-        $x(String.format(CONTACT_NAME_FIELD_XPATH, accountName)).click();
+        $x(String.format(CONTACT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.clickable).click();
         return new ContactPage();
     }
 }
