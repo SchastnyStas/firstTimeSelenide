@@ -19,16 +19,10 @@ public class Input {
     }
 
     public void writeTextToInput(String text) {
-        $x(String.format(INPUT_XPATH, label)).should(Condition.exist, Duration.ofSeconds(15))
-                .shouldBe(Condition.visible, Duration.ofSeconds(15))
-                .shouldBe(Condition.enabled, Duration.ofSeconds(15))
-                .setValue(text);
+        $x(String.format(INPUT_XPATH, label)).setValue(text);
     }
 
     public void writeTextToTextarea(String text) {
-        $x(String.format(TEXTAREA_XPATH, label)).should(Condition.exist, Duration.ofSeconds(15))
-                .shouldBe(Condition.visible, Duration.ofSeconds(15))
-                .shouldBe(Condition.enabled, Duration.ofSeconds(15))
-                .setValue(text);
+        $x(String.format(TEXTAREA_XPATH, label)).setValue(text);
     }
 }
