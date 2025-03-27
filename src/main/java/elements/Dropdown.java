@@ -2,9 +2,6 @@ package elements;
 
 import com.codeborne.selenide.Condition;
 
-
-import java.time.Duration;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Dropdown {

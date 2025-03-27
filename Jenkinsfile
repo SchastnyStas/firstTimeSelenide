@@ -22,7 +22,8 @@ pipeline {
 //          sh "mvn clean test"
 
             // To run Maven on a Windows agent, use
-bat "mvn clean -Dtest=AccountTest test -Dmaven.test.failure.ignore=true"
+             bat "rmdir /s /q target\\allure-results"
+              bat "mvn clean -Dtest=AccountTest test -Dmaven.test.failure.ignore=true"
 
          }
 
