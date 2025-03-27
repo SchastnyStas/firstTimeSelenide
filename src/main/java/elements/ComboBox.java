@@ -1,6 +1,7 @@
 package elements;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,9 +18,18 @@ public class ComboBox {
     public ComboBox() {
 
     }
-
     public void accountSelectOption(String option) {
-        $x(String.format(COMBO_BOX)).shouldBe(Condition.visible).click();
-        $x(String.format(COMBO_BOX_OPTION, option)).shouldBe(Condition.visible).click();
+        SelenideElement comboBox = $x(String.format(COMBO_BOX)).shouldBe(Condition.visible, Duration.ofSeconds(10));
+        comboBox.click();
+
+        SelenideElement optionElement = $x(String.format(COMBO_BOX_OPTION, option))
+                .shouldBe(Condition.exist, Duration.ofSeconds(10))
+                .shouldBe(Condition.visible, Duration.ofSeconds(10))
+                .shouldBe(Condition.enabled, Duration.ofSeconds(10));
+
+        optionElement.click();
+    //public void accountSelectOption(String option) {
+      //  $x(String.format(COMBO_BOX)).shouldBe(Condition.visible).click();
+            //$x(String.format(COMBO_BOX_OPTION, option)).shouldBe(Condition.visible).click();
     }
 }
