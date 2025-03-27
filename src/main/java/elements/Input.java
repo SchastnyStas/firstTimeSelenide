@@ -19,7 +19,9 @@ public class Input {
     }
 
     public void writeTextToInput(String text) {
-        $x(String.format(INPUT_XPATH, label)).setValue(text).shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $x(String.format(INPUT_XPATH, label)).setValue(text).should(Condition.exist, Duration.ofSeconds(15))  // Дождаться, что элемент существует
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))  // Дождаться, что он видимый
+                .shouldBe(Condition.enabled, Duration.ofSeconds(15));;
     }
 
     public void writeTextToTextarea(String text) {
