@@ -1,11 +1,11 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import org.openqa.selenium.By;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AccountListPage extends BasePage {
     public static final String TABLE_XPATH = "//table";
@@ -32,7 +32,9 @@ public class AccountListPage extends BasePage {
     }
 
     public AccountPage clickOnAccountName(String accountName) {
-        $x(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
+        $(By.xpath(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName)))
+                .shouldBe(Condition.visible, Duration.ofSeconds(15))
+                .click();
         return new AccountPage();
     }
 }
