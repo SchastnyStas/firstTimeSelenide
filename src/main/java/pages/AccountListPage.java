@@ -32,7 +32,7 @@ public class AccountListPage extends BasePage {
     }
 
     public AccountPage clickOnAccountName(String accountName) {
-        $x(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.visible).click();
+        $x(String.format(ACCOUNT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
         return new AccountPage();
     }
 }
