@@ -19,10 +19,10 @@ public class Input {
     }
 
     public void writeTextToInput(String text) {
-        $x(String.format(INPUT_XPATH, label)).shouldBe(Condition.visible, Duration.ofSeconds(15)).setValue(text);
+        $x(String.format(INPUT_XPATH, label)).setValue(text).shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
     public void writeTextToTextarea(String text) {
-        $x(String.format(TEXTAREA_XPATH, label)).setValue(text);
+        $x(String.format(TEXTAREA_XPATH, label)).setValue(text).shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 }
