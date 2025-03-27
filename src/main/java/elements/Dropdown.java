@@ -19,9 +19,7 @@ public class Dropdown {
     }
 
     public void accountSelectOption(String option) {
-        $x(String.format(ACCOUNT_DROPDOWN_XPATH, label))
-                .should(Condition.visible, Duration.ofSeconds(15)).click();
-        $x(String.format(ACCOUNT_DROPDOWN_OPTION_XPATH, option))
-                .should(Condition.visible, Duration.ofSeconds(15)).click();
+        $x(String.format(ACCOUNT_DROPDOWN_XPATH, label)).click();
+        $x(String.format(ACCOUNT_DROPDOWN_OPTION_XPATH, option)).click();
     }
 }
