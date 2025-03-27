@@ -1,5 +1,7 @@
 package elements;
 
+import com.codeborne.selenide.Condition;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Dropdown {
@@ -14,7 +16,7 @@ public class Dropdown {
     }
 
     public void accountSelectOption(String option) {
-        $x(String.format(ACCOUNT_DROPDOWN_XPATH, label)).click();
-        $x(String.format(ACCOUNT_DROPDOWN_OPTION_XPATH, option)).click();
+        $x(String.format(ACCOUNT_DROPDOWN_XPATH, label)).shouldBe(Condition.clickable).click();
+        $x(String.format(ACCOUNT_DROPDOWN_OPTION_XPATH, option)).shouldBe(Condition.clickable).click();
     }
 }
