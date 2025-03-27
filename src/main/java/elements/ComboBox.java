@@ -19,7 +19,7 @@ public class ComboBox {
     }
 
     public void accountSelectOption(String option) {
-        $x(String.format(COMBO_BOX)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
-        $x(String.format(COMBO_BOX_OPTION, option)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
+        $x(String.format(COMBO_BOX)).shouldBe(Condition.visible).click();
+        $x(String.format(COMBO_BOX_OPTION, option)).shouldBe(Condition.visible).click();
     }
 }
