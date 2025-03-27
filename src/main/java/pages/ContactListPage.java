@@ -39,7 +39,7 @@ public class ContactListPage extends BasePage {
     }
 
     public ContactPage clickOnAccountName(String accountName) {
-        $x(String.format(CONTACT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
+        $x(String.format(CONTACT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.visible).click();
         return new ContactPage();
     }
 }
