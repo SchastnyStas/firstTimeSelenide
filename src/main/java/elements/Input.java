@@ -1,5 +1,9 @@
 package elements;
 
+import com.codeborne.selenide.Condition;
+
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Input {
@@ -15,7 +19,7 @@ public class Input {
     }
 
     public void writeTextToInput(String text) {
-        $x(String.format(INPUT_XPATH, label)).setValue(text);
+        $x(String.format(INPUT_XPATH, label)).shouldBe(Condition.visible, Duration.ofSeconds(10)).setValue(text);
     }
 
     public void writeTextToTextarea(String text) {
