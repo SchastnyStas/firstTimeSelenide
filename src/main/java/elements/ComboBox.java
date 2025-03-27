@@ -4,6 +4,8 @@ import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ComboBox {
@@ -17,7 +19,7 @@ public class ComboBox {
     }
 
     public void accountSelectOption(String option) {
-        $x(String.format(COMBO_BOX)).click();
-        $x(String.format(COMBO_BOX_OPTION, option)).shouldBe(Condition.clickable).click();
+        $x(String.format(COMBO_BOX)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
+        $x(String.format(COMBO_BOX_OPTION, option)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
     }
 }

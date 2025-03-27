@@ -3,6 +3,8 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ContactListPage extends BasePage {
@@ -37,7 +39,7 @@ public class ContactListPage extends BasePage {
     }
 
     public ContactPage clickOnAccountName(String accountName) {
-        $x(String.format(CONTACT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.clickable).click();
+        $x(String.format(CONTACT_NAME_FIELD_XPATH, accountName)).shouldBe(Condition.visible, Duration.ofSeconds(15)).click();
         return new ContactPage();
     }
 }
